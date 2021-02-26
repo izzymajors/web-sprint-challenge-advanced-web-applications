@@ -1,6 +1,7 @@
 import React from "react";
 import {  BrowserRouter as Router, Route, Switch, Link, useHistory } from "react-router-dom";
 
+
 import Login from "./components/Login";
 import BubblePage from "./components/BubblePage";
 import PrivateRoute from "./components/PrivateRoute";
@@ -14,7 +15,7 @@ function App() {
   const logout = () => {
     // axios call to logout - usually will invalidate the token from the server
     axiosWithAuth()
-      .post("/api/logout")
+      .post("/logout")
       .then(() => {
         // remove the token from localStorage
         localStorage.removeItem("token");
@@ -28,17 +29,19 @@ function App() {
         <li>
           <Link to="/login">Login</Link>
         </li>
-        {/* <li>
+        <li>
           <Link onClick={logout}>Logout</Link>
-        </li> */}
+        </li>
         <li>
           <Link to="/protected">Protected Page</Link>
         </li>
       </ul>
       <Switch>
-        <BubblePage exact path= "/protected" component={BubblePage} />
+       
+        <PrivateRoute exact path= "/protected" component={BubblePage} />
         <Route exact path="/" component={Login} />
         <Route component={Login} />
+       
       </Switch>
     </div>
   );

@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import {Route, NavLink, useHistory, useParams } from 'react-router-dom';
+import React, { useState } from "react";
+import { useHistory, useParams } from 'react-router-dom';
 import axios from "axios";
 
 import EditMenu from "./EditMenu";
-import Color from "./Color";
+
 
 
 const initialColor = {
