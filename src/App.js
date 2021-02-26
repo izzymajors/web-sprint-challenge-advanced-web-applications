@@ -28,9 +28,9 @@ function App() {
         <li>
           <Link to="/login">Login</Link>
         </li>
-        <li>
+        {/* <li>
           <Link onClick={logout}>Logout</Link>
-        </li>
+        </li> */}
         <li>
           <Link to="/protected">Protected Page</Link>
         </li>

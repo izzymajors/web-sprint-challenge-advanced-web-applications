@@ -1,19 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import {Route, NavLink, useHistory, useParams } from 'react-router-dom';
 import axios from "axios";
 
 import EditMenu from "./EditMenu";
+
 
 const initialColor = {
   color: "",
   code: { hex: "" }
 };
 
-const ColorList = ({ colors, updateColors }) => {
+function ColorList({colors, updateColors}) {
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
+  const { id } = useParams();
+  const { push } = useHistory();
+
+  // useEffect(() =>{
+  //   axios.get() 
+  //     .then(res=>{
+
+  //     })
+  //   }
+  // })
 
   const editColor = color => {
-    setEditing(true);
+    setEditing(false);
     setColorToEdit(color);
   };
 
@@ -23,7 +35,15 @@ const ColorList = ({ colors, updateColors }) => {
   };
 
   const deleteColor = color => {
-  };
+    axios.delete(`http://localhost:5000/api/colors/${id}`)
+    .then(res => {
+      color.updateColors(res.data);
+      push('/colors')
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
 
   return (
     <div className="colors-wrap">
