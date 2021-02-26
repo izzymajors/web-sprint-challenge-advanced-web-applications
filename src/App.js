@@ -36,7 +36,7 @@ function App() {
         </li>
       </ul>
       <Switch>
-        <PrivateRoute exact path= "/protected" component={BubblePage} />
+        <BubblePage exact path= "/protected" component={BubblePage} />
         <Route exact path="/" component={Login} />
         <Route component={Login} />
       </Switch>

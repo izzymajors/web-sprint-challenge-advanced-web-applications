@@ -3,6 +3,7 @@ import {Route, NavLink, useHistory, useParams } from 'react-router-dom';
 import axios from "axios";
 
 import EditMenu from "./EditMenu";
+import Color from "./Color";
 
 
 const initialColor = {
